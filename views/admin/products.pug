@@ -1,0 +1,26 @@
+extends ../layouts/main-layout.pug
+
+block styles 
+  link(rel="stylesheet", href="/styles/product.css")
+
+block content
+  main 
+    if prods.length > 0
+      .grid
+        each product in prods
+          article.card.product-item
+            header.card__header
+              h1.product__title #{product.title}
+            div.card__image
+              img(src=`${product.imageUrl}` , alt=`${product.title}`)
+            div.card__content
+              h2.product__price $#{product.price}
+              p.product__description #{product.description}
+            .card__actions
+              a.btn.product__act-btn(href=`/admin/edit-product/${product._id}?edit=true`) Edit Product
+              form(action=`/admin/delete-product`, method="post") 
+                input(type="hidden", name="productId" value=`${product._id}`)
+                input(type="hidden", name='_csrf', value=`${csrfToken}`)
+                button.btn.product__act-btn.wrong Delete Product
+    else 
+      h2 No products found

@@ -1,0 +1,45 @@
+extends ../layouts/main-layout.pug
+
+block styles 
+  link(rel="stylesheet", href="/styles/forms.css")
+
+block content 
+  if editing 
+    form.add-product-form(action=(errorMessage ?'/admin/add-product' :`/admin/edit-product/`), method="POST").good-form
+      .form-control 
+        label(for="title") Product title
+        input(type="text" id="title" name="title" value=`${product.title}`)
+      .form-control 
+        label(for="imgurl") Product image URL 
+        input(type="text" id="imgurl" name="imageUrl"  value=`${product.imageUrl}`)
+      //- .form-control 
+      //-   label(for="image") Product image
+      //-   input(type="file" id="image" name="image")
+      .form-control 
+        label(for="price") Product price 
+        input(type="number" id="price" name="price" step="0.01"  value=`${product.price}`)
+      .form-control 
+        label(for="disc") Product discription
+        textarea(name="description", rows="5", id="disc") #{product.description}
+        input(type="hidden" name="_id" value=`${product._id}`)
+      input(type="hidden", name='_csrf', value=`${csrfToken}`)
+      button.btn(type="submit") Save
+  else 
+    form.add-product-form(action="/admin/add-product", method="POST").good-form
+      .form-control 
+        label(for="title") Product title
+        input(type="text" id="title" name="title")
+      .form-control 
+        label(for="imgurl") Product image URL 
+        input(type="text" id="imgurl" name="imageUrl")
+      //- .form-control 
+      //-   label(for="image") Product image
+      //-   input(type="file" id="image" name="image")
+      .form-control 
+        label(for="price") Product price 
+        input(type="number" id="price" name="price" step="0.01")
+      .form-control 
+        label(for="disc") Product discription
+        textarea(name="description", rows="5", id="disc")
+      input(type="hidden", name='_csrf', value=`${csrfToken}`)
+      button.btn(type="submit") Add 

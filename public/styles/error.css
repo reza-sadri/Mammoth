@@ -1,0 +1,18 @@
+.error {
+  color: #69003d;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.error-title {
+  font-size: 5rem;
+}
+
+.error-code {
+  font-size: 15rem;
+  margin-bottom: 0;
+}
+
+.error-description {
+  font-weight: lighter;
+}

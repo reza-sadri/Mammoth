@@ -1,0 +1,10 @@
+extends layouts/main-layout.pug
+
+block styles
+  link(rel="stylesheet", href="/styles/error.css")
+
+block content
+  main 
+    h1.error.error-code 500
+    h1.error.error-title Some error occurred! 
+    p.error.error-description Sorry for the inconvenience! 

@@ -1,0 +1,10 @@
+extends layouts/main-layout.pug
+
+block styles
+  link(rel="stylesheet", href="/styles/error.css")
+
+block content
+  main 
+    h1.error.error-code 404
+    h1.error.error-title Page not found! 
+    p.error.error-description Your URL is invalid, please check it.
